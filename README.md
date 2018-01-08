@@ -16,22 +16,22 @@ $ docker run -v `pwd`:/var/www/ phppm/ppm --help
 $ docker run -v `pwd`:/var/www/ phppm/ppm config --help
 
 # with nginx as static file server
-$ docker run -t --rm --name ppm -v `pwd`:/var/www -p 8080:80 phppm/nginx:latest
+$ docker run --rm --name ppm -v `pwd`:/var/www -p 8080:80 phppm/nginx:latest
 
 # with php-pm as static file server (dev only)
-$ docker run -t --rm --name ppm -v `pwd`:/var/www -p 8080:80 phppm/nginx:latest
+$ docker run --rm --name ppm -v `pwd`:/var/www -p 8080:80 phppm/nginx:latest
 
 # use `PPM_CONFIG` environment variable to choose a different ppm config file.
-$ docker run -t --rm --name ppm -e PPM_CONFIG=ppm-prod.json -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
+$ docker run --rm --name ppm -e PPM_CONFIG=ppm-prod.json -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
 
 # enable file tracking, to automatically restart ppm when php source changed
-$ docker run -t --rm --name ppm -e PPM_DEBUG=1 -e PPM_APP_ENV=dev -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
+$ docker run --rm --name ppm -e PPM_DEBUG=1 -e PPM_APP_ENV=dev -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
 
 # change static file directory. PPM_STATIC relative to mounted /var/www/.
-$ docker run -t --rm --name ppm -e PPM_STATIC=./web/ -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
+$ docker run --rm --name ppm -e PPM_STATIC=./web/ -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
 
 # Use 16 threads/workers for PHP-PM.
-$ docker run -t --rm --name ppm -e PPM_WORKER=16 -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
+$ docker run --rm --name ppm -e PPM_WORKER=16 -v `pwd`:/var/www -p 80:80 phppm/nginx:latest
 ```
 
 Docker compose
@@ -89,6 +89,6 @@ RUN apk --no-cache add ca-certificates wget
 ```
 
 ```
-docker build -t vendor/my-image -f Dockerfile .
+docker build vendor/my-image -f Dockerfile .
 # now use vendor/my-image instead of `phppm/nginx`
 ```

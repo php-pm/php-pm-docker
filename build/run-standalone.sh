@@ -7,4 +7,4 @@ ARGS='--port 80'
 [ ! -z "$PPM_WORKER" ] && ARGS="$ARGS --worker=$PPM_WORKER"
 [ ! -z "$PPM_APP_ENV" ] && ARGS="$ARGS --app-env=$PPM_APP_ENV"
 
-trapIt /ppm/vendor/bin/ppm start $ARGS
+trapIt /ppm/vendor/bin/ppm start --ansi $ARGS
