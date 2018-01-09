@@ -1,7 +1,8 @@
 FROM composer/composer:1.1 as composer
 
 ARG version=dev-master
-RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${version}
+ARG http_version=dev-master
+RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${http_version}
 
 FROM alpine:3.6
 
@@ -12,6 +13,8 @@ RUN apk --no-cache add tzdata && \
     cp /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
     echo "UTC" | tee /etc/timezone && \
     apk del tzdata
+
+RUN apk --no-cache add bash
 
 RUN apk --no-cache add \
     php7 php7-opcache php7-fpm php7-cgi php7-ctype php7-json php7-dom php7-zip php7-zip php7-gd \
@@ -31,4 +34,4 @@ COPY --from=composer /ppm /ppm
 WORKDIR /var/www
 
 ADD run-nginx.sh /etc/app/run.sh
-ENTRYPOINT ["/bin/sh", "/etc/app/run.sh"]
+ENTRYPOINT ["/bin/bash", "/etc/app/run.sh"]

@@ -1,7 +1,8 @@
 FROM composer/composer:1.1 as composer
 
 ARG version=dev-master
-RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${version}
+ARG http_version=dev-master
+RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${http_version}
 
 FROM alpine:3.6
 
