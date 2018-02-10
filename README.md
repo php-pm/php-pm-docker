@@ -54,7 +54,7 @@ services:
 
 ### Configuration
 
-You should configure PPM via the ppm.json in the root directory, which is withing the container mounted to 
+You should configure PPM via the ppm.json in the root directory, which is within the container mounted to 
 `/var/www/`. Alternatively, you can overwrite each option using the regular cli arguments.
 
 ```
