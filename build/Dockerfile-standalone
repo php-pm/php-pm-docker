@@ -4,7 +4,7 @@ ARG version=dev-master
 ARG http_version=dev-master
 RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${http_version}
 
-FROM alpine:3.6
+FROM alpine:3.7
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
