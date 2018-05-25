@@ -15,7 +15,7 @@ nginx
 
 mkdir -p /ppm/run
 chmod -R 777 /ppm/run
-ARGS='--port=8080 --socket-path=/ppm/run --pidfile=/ppm/ppm.pid'
+ARGS='--port=8081 --socket-path=/ppm/run --pidfile=/ppm/ppm.pid'
 
 # make sure static-directory is not served by php-pm
 ARGS="$ARGS --static-directory=''"
