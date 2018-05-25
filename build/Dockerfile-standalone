@@ -23,7 +23,7 @@ ADD etc/php.ini /etc/php7/php.ini
 
 RUN apk --no-cache add bash
 
-EXPOSE 80
+EXPOSE 8080
 
 COPY --from=composer /ppm /ppm
 

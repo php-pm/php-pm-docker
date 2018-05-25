@@ -2,6 +2,7 @@ FROM composer/composer:1.1 as composer
 
 ARG version=dev-master
 ARG http_version=dev-master
+
 RUN mkdir /ppm && cd /ppm && composer require php-pm/php-pm:${version} && composer require php-pm/httpkernel-adapter:${http_version}
 
 FROM alpine:3.7
@@ -27,7 +28,7 @@ RUN apk --no-cache add nginx
 ADD etc/nginx_default.conf /etc/nginx/sites-enabled/default
 ADD etc/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
+EXPOSE 8080
 
 COPY --from=composer /ppm /ppm
 
