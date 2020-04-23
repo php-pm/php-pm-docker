@@ -10,7 +10,7 @@ You can use [PHP-PM](https://github.com/php-pm/php-pm) using Docker. We provide 
 
 ### Examples
 
-```
+```sh
 # change into your project folder first
 cd your/symfony-project/
 
@@ -39,7 +39,7 @@ $ docker run -v `pwd`:/var/www -p 80:80 phppm/nginx --workers=16
 
 Docker compose
 
-```
+```docker
 version: "3.1"
 
 services:
@@ -57,7 +57,7 @@ services:
 You should configure PPM via the ppm.json in the root directory, which is within the container mounted to 
 `/var/www/`. Alternatively, you can overwrite each option using the regular cli arguments.
 
-```
+```sh
 # change the ppm.json within current directory
 docker run -v `pwd`:/var/www phppm/ppm config --help
 
@@ -72,7 +72,7 @@ docker run -v `pwd`:/var/www -p 80:80 phppm/nginx --c prod-ppm.json
 If your applications requires additional php modules or other tools and libraries in your container, you
 can use our image as base. We use lightweight Alpine Linux.
 
-```
+```docker
 # Dockerfile
 FROM phppm/nginx:1.0
 
@@ -82,7 +82,7 @@ RUN apk --no-cache add ca-certificates wget
 # whatever you need 
 ```
 
-```
+```sh
 docker build vendor/my-image -f Dockerfile .
 # now use vendor/my-image instead of `phppm/nginx`
 ```
