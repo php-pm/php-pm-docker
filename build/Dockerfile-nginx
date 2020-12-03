@@ -1,4 +1,4 @@
-FROM composer:1.9 as composer
+FROM composer:2 as composer
 
 ARG version=dev-master
 ARG http_version=dev-master
