@@ -22,14 +22,14 @@ ADD etc/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
-ARG PHP_PM_VERSION=dev-master
+ARG PHP_PM_VERSION=2.4
 ARG PHP_PM_HTTP_VERSION=dev-master
 
 WORKDIR /ppm
 
 COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
 
-RUN composer require php-pm/php-pm:${PHP_PM_VERSION} && composer require php-pm/httpkernel-adapter:${PHP_PM_HTTP_VERSION}
+RUN composer require php-pm/php-pm:${PHP_PM_VERSION} php-pm/httpkernel-adapter:${PHP_PM_HTTP_VERSION}
 
 WORKDIR /var/www
 
