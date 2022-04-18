@@ -24,11 +24,10 @@ EXPOSE 80
 
 ARG PHP_PM_VERSION=dev-master
 ARG PHP_PM_HTTP_VERSION=dev-master
-ARG COMPOSER_VERSION=2.3
 
 WORKDIR /ppm
 
-COPY --from=composer:${COMPOSER_VERSION} /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
 
 RUN composer require php-pm/php-pm:${PHP_PM_VERSION} && composer require php-pm/httpkernel-adapter:${PHP_PM_HTTP_VERSION}
 
